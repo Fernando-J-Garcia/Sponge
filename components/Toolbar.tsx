@@ -6,19 +6,24 @@ export default function Toolbar() {
     <Box p={5} bg="gray.100" w={"fit-content"} h="100vh">
       <List>
         <ListItem paddingBottom={2}>
-          <Button>Square</Button>
+          <Button bg="blue.400" color="white">
+            Square
+          </Button>
         </ListItem>
         <ListItem paddingBottom={2}>
-          <Button>Square</Button>
+          <Button bg="blue.400" color="white">
+            Square
+          </Button>
         </ListItem>
         <ListItem paddingBottom={2}>
-          <Button>Square</Button>
+          <Button bg="blue.400" color="white">
+            Square
+          </Button>
         </ListItem>
         <ListItem paddingBottom={2}>
-          <Button>Square</Button>
-        </ListItem>
-        <ListItem paddingBottom={2}>
-          <Button>Square</Button>
+          <Button bg="blue.400" color="white">
+            Square
+          </Button>
         </ListItem>
       </List>
     </Box>
