@@ -3,7 +3,7 @@ import Toolbar from "../components/Toolbar";
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <div className="home">
       <Toolbar />
     </div>
   );
