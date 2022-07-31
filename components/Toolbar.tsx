@@ -1,28 +1,12 @@
 import { Box, Button, Container, List, ListItem } from "@chakra-ui/react";
 import React from "react";
+import { createRoot } from "react-dom/client";
+import Rect from "./Rect";
 
 export default function Toolbar() {
   function handleClickRect(e: React.MouseEvent<HTMLButtonElement>) {
-    //TODO: Put into seperate component so that its really easy in the future
-    //to add controls like resizing etc..
-    const rect = document.createElement("div");
-    rect.style.width = "100px";
-    rect.style.height = "100px";
-    rect.style.left = "0";
-    rect.style.top = "0";
-    rect.style.position = "absolute";
-    rect.style.backgroundColor = "red";
-    document.querySelector(".home")?.append(rect);
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseup", handleMouseUp);
-    function handleMouseMove(event: MouseEvent) {
-      rect.style.left = event.clientX + "px";
-      rect.style.top = event.clientY + "px";
-    }
-    function handleMouseUp() {
-      document.removeEventListener("mouseup", handleMouseUp);
-      document.removeEventListener("mousemove", handleMouseMove);
-    }
+    const root = createRoot(document.getElementById("canvas")!);
+    root.render(<Rect />);
   }
   return (
     <Box p={5} bg="gray.100" w={"fit-content"} h="100vh">
