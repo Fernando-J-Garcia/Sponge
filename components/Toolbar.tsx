@@ -20,15 +20,15 @@ export default function Toolbar() {
   }
   return (
     <Box
-      p={5}
       bg="gray.100"
       w={"fit-content"}
       h="100vh"
       display={"flex"}
       flexDir="column"
       gap={"8"}
+      py={"4"}
     >
-      <List>
+      <List px={5}>
         <ListItem paddingBottom={2}>
           <Button
             colorScheme={"twitter"}
@@ -55,10 +55,14 @@ export default function Toolbar() {
         </ListItem>
       </List>
       {/*Layers*/}
-      <List>
-        <ListItem>Layers</ListItem>
+      <List overflow={"auto"}>
+        <ListItem w={"100%"} borderBottom="1px" p={"2"} fontWeight={"bold"}>
+          Layers
+        </ListItem>
         {elementPropertiesList.map((elemProperty, idx) => (
-          <ListItem>{elemProperty.getAttribute("data-element")}</ListItem>
+          <ListItem w={"100%"} borderBottom="1px" p={"2"}>
+            {elemProperty.getAttribute("data-element")}
+          </ListItem>
         ))}
       </List>
       {/*Color Picker*/}
