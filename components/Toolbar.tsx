@@ -7,8 +7,13 @@ import Rect from "./Rect";
 
 export default function Toolbar() {
   const [rectList, setRectList] = useState<JSX.Element[]>([]);
-  const { addElement, elements, currentColor, setCurrentColor } =
-    useContext(CanvasContext);
+  const {
+    addElement,
+    elements,
+    currentColor,
+    setCurrentColor,
+    elementPropertiesList,
+  } = useContext(CanvasContext);
 
   function handleClickRect(e: React.MouseEvent<HTMLButtonElement>) {
     addElement(<Rect key={elements?.length} />);
@@ -20,7 +25,7 @@ export default function Toolbar() {
       w={"fit-content"}
       h="100vh"
       display={"flex"}
-      flexDir="row"
+      flexDir="column"
       gap={"8"}
     >
       <List>
@@ -49,6 +54,14 @@ export default function Toolbar() {
           </Button>
         </ListItem>
       </List>
+      {/*Layers*/}
+      <List>
+        <ListItem>Layers</ListItem>
+        {elementPropertiesList.map((elemProperty, idx) => (
+          <ListItem>{elemProperty.getAttribute("data-element")}</ListItem>
+        ))}
+      </List>
+      {/*Color Picker*/}
       <Box display={"flex"} flexDir="row" gap={"2"}>
         <label>Color</label>
         <input
