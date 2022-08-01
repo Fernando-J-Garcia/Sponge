@@ -1,4 +1,13 @@
-import { Box, Button, Container, List, ListItem } from "@chakra-ui/react";
+import {
+  AspectRatio,
+  Box,
+  Button,
+  Container,
+  Grid,
+  GridItem,
+  List,
+  ListItem,
+} from "@chakra-ui/react";
 import { jsx } from "@emotion/react";
 import React, { useContext, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
@@ -21,47 +30,76 @@ export default function Toolbar() {
   return (
     <Box
       bg="gray.100"
-      w={"fit-content"}
+      w={"200px"}
       h="100vh"
       display={"flex"}
       flexDir="column"
       gap={"8"}
       py={"4"}
     >
-      <List px={5}>
-        <ListItem paddingBottom={2}>
-          <Button
-            colorScheme={"twitter"}
-            color="white"
-            onClick={handleClickRect}
-          >
-            Rect
-          </Button>
-        </ListItem>
-        <ListItem paddingBottom={2}>
-          <Button colorScheme={"twitter"} color="white">
+      <Grid px={5} templateColumns="repeat(2,1fr)" gap={"2"}>
+        <GridItem>
+          <AspectRatio ratio={1} maxW={"200px"}>
+            <Button
+              colorScheme={"twitter"}
+              color="white"
+              backgroundColor={"white"}
+              borderColor="twitter.400"
+              border={"2px"}
+              variant="outline"
+              onClick={handleClickRect}
+              w="100%"
+            ></Button>
+          </AspectRatio>
+        </GridItem>
+        <GridItem>
+          <AspectRatio ratio={1} maxW="100px">
+            <Button
+              colorScheme={"twitter"}
+              color="white"
+              width={"100%"}
+              backgroundColor={"white"}
+              borderColor="twitter.400"
+              border={"2px"}
+              borderRadius="50%"
+              variant="outline"
+            ></Button>
+          </AspectRatio>
+        </GridItem>
+        {/* <GridItem>
+          <Button colorScheme={"twitter"} color="white" w={"100%"}>
             Square
           </Button>
-        </ListItem>
-        <ListItem paddingBottom={2}>
-          <Button colorScheme={"twitter"} color="white">
+        </GridItem>
+        <GridItem>
+          <Button colorScheme={"twitter"} color="white" w={"100%"}>
             Square
           </Button>
-        </ListItem>
-        <ListItem paddingBottom={2}>
-          <Button colorScheme={"twitter"} color="white">
-            Square
-          </Button>
-        </ListItem>
-      </List>
+        </GridItem> */}
+      </Grid>
       {/*Layers*/}
       <List overflow={"auto"}>
         <ListItem w={"100%"} borderBottom="1px" p={"2"} fontWeight={"bold"}>
           Layers
         </ListItem>
         {elementPropertiesList.map((elemProperty, idx) => (
-          <ListItem w={"100%"} borderBottom="1px" p={"2"}>
+          <ListItem
+            w={"100%"}
+            borderBottom="1px"
+            p={"2"}
+            display="flex"
+            alignItems={"center"}
+            gap="2"
+          >
             {elemProperty.getAttribute("data-element")}
+            <input
+              type={"color"}
+              onChange={(e) => {
+                console.log(elementPropertiesList[idx]);
+                return (elementPropertiesList[idx].style.backgroundColor =
+                  e.target.value);
+              }}
+            />
           </ListItem>
         ))}
       </List>
