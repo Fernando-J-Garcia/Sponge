@@ -1,1 +1,13 @@
-
+[data-element] {
+  width: 100px;
+  height: 100px;
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  background-color: red;
+  resize: both;
+  overflow: hidden;
+}
+[data-element]:hover {
+  outline: 1px solid black;
+}
