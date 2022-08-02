@@ -20,8 +20,6 @@ export default function Rect() {
   function handleMouseDown(e) {
     if (ref.current === null) return;
     const position = ref.current.getBoundingClientRect();
-    console.log({ mouseX: e.clientX });
-    console.log({ squareX: position.right });
     if (position.right < e.clientX + 20 && position.top < e.clientY + 20)
       return;
     setFocusedElement(ref.current);
