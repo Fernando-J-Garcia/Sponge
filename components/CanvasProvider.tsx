@@ -14,6 +14,7 @@ interface CanvasContextInterface {
   setElements: (value: JSX.Element[]) => void;
   elementPropertiesList: HTMLDivElement[];
   addElementProperty: (value: HTMLDivElement) => void;
+  setElementPropertyColor: (value: string, index: number) => void;
   focusedElement: HTMLDivElement | null;
   setFocusedElement: (element: HTMLDivElement | null) => void;
   currentColor: string;
@@ -27,6 +28,7 @@ const defaultValue = {
   setElements: () => {},
   elementPropertiesList: [],
   addElementProperty: () => {},
+  setElementPropertyColor: () => {},
   focusedElement: null,
   setFocusedElement: () => {},
   currentColor: "#000000",
@@ -83,6 +85,12 @@ export function CanvasProvider({ children }: any) {
   function addElementProperty(value: HTMLDivElement) {
     setElementPropertiesList((prev) => [...prev, value]);
   }
+  function setElementPropertyColor(value: string, index: number) {
+    const result = elementPropertiesList;
+    result[index].style.backgroundColor = value;
+
+    setElementPropertiesList(result);
+  }
 
   const value: CanvasContextInterface = {
     elements: elements,
@@ -90,6 +98,7 @@ export function CanvasProvider({ children }: any) {
     setElements: (value: JSX.Element[]) => setElements(value),
     elementPropertiesList: elementPropertiesList,
     addElementProperty: addElementProperty,
+    setElementPropertyColor: setElementPropertyColor,
     focusedElement: focusedElement.current,
     setFocusedElement: setFocusedElement,
     currentColor: currentColor.current,
