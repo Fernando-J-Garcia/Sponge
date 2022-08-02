@@ -73,16 +73,15 @@ export function CanvasProvider({ children }: any) {
   //End Mouse Events ====================================================================
 
   function addElement(element: JSX.Element) {
-    console.log(element);
     setElements((prev) => [...prev, element]);
   }
   function setFocusedElement(element: HTMLDivElement | null) {
     focusedElement.current = element;
-    console.log(focusedElement.current);
     if (focusedElement.current === null) return;
     focusedElement.current.addEventListener("mouesmove", handleMouseMove);
   }
   function addElementProperty(value: HTMLDivElement) {
+    console.log(value);
     setElementPropertiesList((prev) => [...prev, value]);
   }
   function setElementPropertyColor(value: string, index: number) {
@@ -104,8 +103,6 @@ export function CanvasProvider({ children }: any) {
     currentColor: currentColor.current,
     setCurrentColor: (value: string) => {
       currentColor.current = value;
-      console.log({ currentColor: value });
-      console.log(currentColor);
     },
   };
   return (
