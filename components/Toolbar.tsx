@@ -13,6 +13,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { CanvasContext } from "./CanvasProvider";
 import Rect from "./Rect";
+import ShadowIcon from "./svgs/ShadowIcon";
 
 const rgbToHex = (rgb) =>
   "#" +
@@ -110,6 +111,11 @@ export default function Toolbar() {
               type={"color"}
               defaultValue={rgbToHex(elemProperty.style.backgroundColor)}
               onChange={(e) => setElementPropertyColor(e.target.value, idx)}
+            />
+            <ShadowIcon
+              width={"2ch"}
+              height={"2ch"}
+              color={"var(--chakra-colors-blackAlpha-600)"}
             />
           </ListItem>
         ))}
