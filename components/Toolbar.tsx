@@ -22,6 +22,7 @@ export default function Toolbar() {
     currentColor,
     setCurrentColor,
     elementPropertiesList,
+    setElementPropertyColor,
   } = useContext(CanvasContext);
 
   function handleClickRect(e: React.MouseEvent<HTMLButtonElement>) {
@@ -90,14 +91,15 @@ export default function Toolbar() {
             display="flex"
             alignItems={"center"}
             gap="2"
+            cursor={"pointer"}
+            _hover={{ backgroundColor: "var(--chakra-colors-blackAlpha-50)" }}
           >
             {elemProperty.getAttribute("data-element")}
             <input
               type={"color"}
               onChange={(e) => {
                 console.log(elementPropertiesList[idx]);
-                return (elementPropertiesList[idx].style.backgroundColor =
-                  e.target.value);
+                return setElementPropertyColor(e.target.value, idx);
               }}
             />
           </ListItem>
