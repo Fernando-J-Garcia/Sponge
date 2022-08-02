@@ -14,6 +14,16 @@ import { createRoot } from "react-dom/client";
 import { CanvasContext } from "./CanvasProvider";
 import Rect from "./Rect";
 
+const rgbToHex = (rgb) =>
+  "#" +
+  rgb
+    .match(/\d+/g)
+    .map(function (x) {
+      x = parseInt(x).toString(16);
+      return x.length == 1 ? "0" + x : x;
+    })
+    .join("");
+
 export default function Toolbar() {
   const [rectList, setRectList] = useState<JSX.Element[]>([]);
   const {
@@ -85,6 +95,7 @@ export default function Toolbar() {
         </ListItem>
         {elementPropertiesList.map((elemProperty, idx) => (
           <ListItem
+            key={`layer-${idx}`}
             w={"100%"}
             borderBottom="1px"
             p={"2"}
@@ -97,10 +108,8 @@ export default function Toolbar() {
             {elemProperty.getAttribute("data-element")}
             <input
               type={"color"}
-              onChange={(e) => {
-                console.log(elementPropertiesList[idx]);
-                return setElementPropertyColor(e.target.value, idx);
-              }}
+              defaultValue={rgbToHex(elemProperty.style.backgroundColor)}
+              onChange={(e) => setElementPropertyColor(e.target.value, idx)}
             />
           </ListItem>
         ))}
