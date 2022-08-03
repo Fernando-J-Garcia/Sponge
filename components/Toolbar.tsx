@@ -13,6 +13,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { CanvasContext } from "./CanvasProvider";
 import Rect from "./Rect";
+import RotateIcon from "./svgs/RotateIcon";
 import ShadowIcon from "./svgs/ShadowIcon";
 
 const rgbToHex = (rgb) =>
@@ -114,6 +115,11 @@ export default function Toolbar() {
             />
             <ShadowIcon
               width={"2ch"}
+              height={"2ch"}
+              color={"var(--chakra-colors-blackAlpha-600)"}
+            />
+            <RotateIcon
+              width={"1.5ch"}
               height={"2ch"}
               color={"var(--chakra-colors-blackAlpha-600)"}
             />
