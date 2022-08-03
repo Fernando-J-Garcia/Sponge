@@ -118,11 +118,22 @@ export default function Toolbar() {
               height={"2ch"}
               color={"var(--chakra-colors-blackAlpha-600)"}
             />
-            <RotateIcon
-              width={"1.5ch"}
-              height={"2ch"}
-              color={"var(--chakra-colors-blackAlpha-600)"}
-            />
+            <Box
+              display={"flex"}
+              gap={"1"}
+              alignItems={"center"}
+              px={"2"}
+              _hover={{ cursor: "e-resize", outline: "1px solid gray" }}
+            >
+              <RotateIcon
+                width={"1.5ch"}
+                height={"2ch"}
+                color={"var(--chakra-colors-blackAlpha-600)"}
+              />
+              <span style={{ color: "var(--chakra-colors-blackAlpha-600)" }}>
+                0&#176;
+              </span>
+            </Box>
           </ListItem>
         ))}
       </List>
