@@ -15,6 +15,7 @@ interface CanvasContextInterface {
   elementPropertiesList: HTMLDivElement[];
   addElementProperty: (value: HTMLDivElement) => void;
   setElementPropertyColor: (value: string, index: number) => void;
+  setElementPropertyRotation: (value: string, index: number) => void;
   focusedElement: HTMLDivElement | null;
   setFocusedElement: (element: HTMLDivElement | null) => void;
   currentColor: string;
@@ -29,6 +30,7 @@ const defaultValue = {
   elementPropertiesList: [],
   addElementProperty: () => {},
   setElementPropertyColor: () => {},
+  setElementPropertyRotation: () => {},
   focusedElement: null,
   setFocusedElement: () => {},
   currentColor: "#000000",
@@ -90,6 +92,12 @@ export function CanvasProvider({ children }: any) {
 
     setElementPropertiesList(result);
   }
+  function setElementPropertyRotation(value: string, index: number) {
+    const result = elementPropertiesList;
+    result[index].style.transform = `rotate(${value})`;
+
+    setElementPropertiesList(result);
+  }
 
   const value: CanvasContextInterface = {
     elements: elements,
@@ -98,6 +106,7 @@ export function CanvasProvider({ children }: any) {
     elementPropertiesList: elementPropertiesList,
     addElementProperty: addElementProperty,
     setElementPropertyColor: setElementPropertyColor,
+    setElementPropertyRotation: setElementPropertyRotation,
     focusedElement: focusedElement.current,
     setFocusedElement: setFocusedElement,
     currentColor: currentColor.current,
