@@ -12,19 +12,11 @@ import { jsx } from "@emotion/react";
 import React, { useContext, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { CanvasContext } from "./CanvasProvider";
+import Layer from "./Layer";
+import NumberScrubber from "./NumberScrubber";
 import Rect from "./Rect";
 import RotateIcon from "./svgs/RotateIcon";
 import ShadowIcon from "./svgs/ShadowIcon";
-
-const rgbToHex = (rgb) =>
-  "#" +
-  rgb
-    .match(/\d+/g)
-    .map(function (x) {
-      x = parseInt(x).toString(16);
-      return x.length == 1 ? "0" + x : x;
-    })
-    .join("");
 
 export default function Toolbar() {
   const [rectList, setRectList] = useState<JSX.Element[]>([]);
@@ -35,6 +27,7 @@ export default function Toolbar() {
     setCurrentColor,
     elementPropertiesList,
     setElementPropertyColor,
+    setElementPropertyRotation,
   } = useContext(CanvasContext);
 
   function handleClickRect(e: React.MouseEvent<HTMLButtonElement>) {
@@ -107,33 +100,12 @@ export default function Toolbar() {
             cursor={"pointer"}
             _hover={{ backgroundColor: "var(--chakra-colors-blackAlpha-50)" }}
           >
-            {elemProperty.getAttribute("data-element")}
-            <input
-              type={"color"}
-              defaultValue={rgbToHex(elemProperty.style.backgroundColor)}
-              onChange={(e) => setElementPropertyColor(e.target.value, idx)}
+            <Layer
+              elemProperty={elemProperty}
+              idx={idx}
+              setElementPropertyRotation={setElementPropertyRotation}
+              setElementPropertyColor={setElementPropertyColor}
             />
-            <ShadowIcon
-              width={"2ch"}
-              height={"2ch"}
-              color={"var(--chakra-colors-blackAlpha-600)"}
-            />
-            <Box
-              display={"flex"}
-              gap={"1"}
-              alignItems={"center"}
-              px={"2"}
-              _hover={{ cursor: "e-resize", outline: "1px solid gray" }}
-            >
-              <RotateIcon
-                width={"1.5ch"}
-                height={"2ch"}
-                color={"var(--chakra-colors-blackAlpha-600)"}
-              />
-              <span style={{ color: "var(--chakra-colors-blackAlpha-600)" }}>
-                0&#176;
-              </span>
-            </Box>
           </ListItem>
         ))}
       </List>
