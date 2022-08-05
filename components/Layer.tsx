@@ -1,4 +1,18 @@
-import { Box } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  FormLabel,
+  Input,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTrigger,
+  Portal,
+  Stack,
+} from "@chakra-ui/react";
 import React, { useState } from "react";
 import NumberScrubber from "./NumberScrubber";
 import RotateIcon from "./svgs/RotateIcon";
@@ -12,7 +26,6 @@ export default function Layer({
 }: any) {
   const [rotation, setRotation] = useState(0);
   function onNumberScubberChange(value: number) {
-    console.log(value % 360);
     setRotation(value % 360);
     setElementPropertyRotation((value % 360) + "deg", idx);
   }
@@ -33,11 +46,38 @@ export default function Layer({
         defaultValue={rgbToHex(elemProperty.style.backgroundColor)}
         onChange={(e) => setElementPropertyColor(e.target.value, idx)}
       />
-      <ShadowIcon
-        width={"2ch"}
-        height={"2ch"}
-        color={"var(--chakra-colors-blackAlpha-600)"}
-      />
+      <Popover>
+        <PopoverTrigger>
+          <Button>
+            <ShadowIcon
+              width={"2ch"}
+              height={"2ch"}
+              color={"var(--chakra-colors-blackAlpha-600)"}
+            />
+          </Button>
+        </PopoverTrigger>
+        <Portal>
+          <PopoverContent>
+            <PopoverArrow />
+            <PopoverHeader>Shadow Properties</PopoverHeader>
+            <PopoverCloseButton />
+            <PopoverBody>
+              <Stack>
+                <FormLabel>OffsetY</FormLabel>
+                <Input />
+                <FormLabel>OffsetX</FormLabel>
+                <Input />
+                <FormLabel>Blur</FormLabel>
+                <Input />
+                <FormLabel>Spread</FormLabel>
+                <Input />
+                <FormLabel>Color</FormLabel>
+                <Input />
+              </Stack>
+            </PopoverBody>
+          </PopoverContent>
+        </Portal>
+      </Popover>
       <NumberScrubber callback={onNumberScubberChange}>
         <Box
           display={"flex"}
