@@ -3,6 +3,11 @@ import {
   Button,
   FormLabel,
   Input,
+  NumberDecrementStepper,
+  NumberIncrementStepper,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
   Popover,
   PopoverArrow,
   PopoverBody,
@@ -49,7 +54,7 @@ export default function Layer({ elemProperty, idx }: any) {
     );
   }
   function onBsOffsetXChange(value: number) {
-    setBsOffsetY(value);
+    setBsOffsetX(value);
     setElementPropertyBoxShadow(
       bsOffsetX,
       bsOffsetY,
@@ -60,7 +65,7 @@ export default function Layer({ elemProperty, idx }: any) {
     );
   }
   function onBsBlurChange(value: number) {
-    setBsOffsetY(value);
+    setBsBlur(value);
     setElementPropertyBoxShadow(
       bsOffsetX,
       bsOffsetY,
@@ -71,7 +76,7 @@ export default function Layer({ elemProperty, idx }: any) {
     );
   }
   function onBsSpreadChange(value: number) {
-    setBsOffsetY(value);
+    setBsSpread(value);
     setElementPropertyBoxShadow(
       bsOffsetX,
       bsOffsetY,
@@ -82,7 +87,7 @@ export default function Layer({ elemProperty, idx }: any) {
     );
   }
   function onBsColorChange(value: string) {
-    setBsOffsetY(value);
+    setBsColor(value);
     setElementPropertyBoxShadow(
       bsOffsetX,
       bsOffsetY,
@@ -127,25 +132,50 @@ export default function Layer({ elemProperty, idx }: any) {
             <PopoverBody>
               <Stack>
                 <FormLabel>OffsetY</FormLabel>
-                <Input
-                  defaultValue={bsOffsetY}
-                  onChange={(e) => onBsOffsetYChange(parseInt(e.target.value))}
-                />
+                <NumberInput
+                  value={bsOffsetY}
+                  onChange={(value) => onBsOffsetYChange(parseInt(value))}
+                >
+                  <NumberInputField />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                  </NumberInputStepper>
+                </NumberInput>
+
                 <FormLabel>OffsetX</FormLabel>
-                <Input
-                  defaultValue={bsOffsetX}
-                  onChange={(e) => onBsOffsetXChange(parseInt(e.target.value))}
-                />
+                <NumberInput
+                  value={bsOffsetX}
+                  onChange={(value) => onBsOffsetXChange(parseInt(value))}
+                >
+                  <NumberInputField />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                  </NumberInputStepper>
+                </NumberInput>
                 <FormLabel>Blur</FormLabel>
-                <Input
-                  defaultValue={bsBlur}
-                  onChange={(e) => onBsBlurChange(parseInt(e.target.value))}
-                />
+                <NumberInput
+                  value={bsBlur}
+                  onChange={(value) => onBsBlurChange(parseInt(value))}
+                >
+                  <NumberInputField />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                  </NumberInputStepper>
+                </NumberInput>
                 <FormLabel>Spread</FormLabel>
-                <Input
-                  defaultValue={bsSpread}
-                  onChange={(e) => onBsSpreadChange(parseInt(e.target.value))}
-                />
+                <NumberInput
+                  value={bsSpread}
+                  onChange={(value) => onBsSpreadChange(parseInt(value))}
+                >
+                  <NumberInputField />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                  </NumberInputStepper>
+                </NumberInput>
                 <FormLabel>Color</FormLabel>
                 <input
                   defaultValue={bsColor}
