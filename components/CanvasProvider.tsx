@@ -16,7 +16,14 @@ interface CanvasContextInterface {
   addElementProperty: (value: HTMLDivElement) => void;
   setElementPropertyColor: (value: string, index: number) => void;
   setElementPropertyRotation: (value: string, index: number) => void;
-  setElementPropertyBoxShadow: (value: string, index: number) => void;
+  setElementPropertyBoxShadow: (
+    offsetX: number,
+    offsetY: number,
+    blur: number,
+    spread: number,
+    color: string,
+    index: number
+  ) => void;
   focusedElement: HTMLDivElement | null;
   setFocusedElement: (element: HTMLDivElement | null) => void;
   currentColor: string;
@@ -100,9 +107,18 @@ export function CanvasProvider({ children }: any) {
 
     setElementPropertiesList(result);
   }
-  function setElementPropertyBoxShadow(value: string, index: number) {
+  function setElementPropertyBoxShadow(
+    offsetX: number,
+    offsetY: number,
+    blur: number,
+    spread: number,
+    color: string,
+    index: number
+  ) {
     const result = elementPropertiesList;
-    result[index].style.boxShadow = value;
+    result[
+      index
+    ].style.boxShadow = `${offsetX}px ${offsetY}px ${blur}px ${spread}px ${color}`;
 
     setElementPropertiesList(result);
   }
