@@ -26,9 +26,6 @@ export default function Toolbar() {
     currentColor,
     setCurrentColor,
     elementPropertiesList,
-    // setElementPropertyColor,
-    // setElementPropertyRotation,
-    // setElementPropertyBoxShadow,
   } = useContext(CanvasContext);
 
   function handleClickRect(e: React.MouseEvent<HTMLButtonElement>) {
@@ -101,13 +98,7 @@ export default function Toolbar() {
             cursor={"pointer"}
             _hover={{ backgroundColor: "var(--chakra-colors-blackAlpha-50)" }}
           >
-            <Layer
-              elemProperty={elemProperty}
-              idx={idx}
-              setElementPropertyRotation={setElementPropertyRotation}
-              setElementPropertyColor={setElementPropertyColor}
-              setElementPropertyBoxShadow={setElementPropertyBoxShadow}
-            />
+            <Layer elemProperty={elemProperty} idx={idx} />
           </ListItem>
         ))}
       </List>
