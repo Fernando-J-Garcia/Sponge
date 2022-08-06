@@ -31,20 +31,67 @@ export default function Layer({ elemProperty, idx }: any) {
   const [bsOffsetY, setBsOffsetY] = useState(0);
   const [bsBlur, setBsBlur] = useState(0);
   const [bsSpread, setBsSpread] = useState(0);
-  const [bsColor, setBsColor] = useState(0);
+  const [bsColor, setBsColor] = useState("");
 
   function onRotationScubberChange(value: number) {
     setRotation(value % 360);
     setElementPropertyRotation((value % 360) + "deg", idx);
   }
-  function onBsOffsetYScrubberChange() {
+  function onBsOffsetYScrubberChange(value: number) {
     setBsOffsetY(value);
-    setElementPropertyBoxShadow();
+    setElementPropertyBoxShadow(
+      bsOffsetX,
+      bsOffsetY,
+      bsBlur,
+      bsSpread,
+      bsColor,
+      idx
+    );
   }
-  function onBsOffsetXScrubberChange() {}
-  function onBsBlurScrubberChange() {}
-  function onBSpreadScrubberChange() {}
-  function onBsColorScrubberChange() {}
+  function onBsOffsetXScrubberChange(value: number) {
+    setBsOffsetY(value);
+    setElementPropertyBoxShadow(
+      bsOffsetX,
+      bsOffsetY,
+      bsBlur,
+      bsSpread,
+      bsColor,
+      idx
+    );
+  }
+  function onBsBlurScrubberChange(value: number) {
+    setBsOffsetY(value);
+    setElementPropertyBoxShadow(
+      bsOffsetX,
+      bsOffsetY,
+      bsBlur,
+      bsSpread,
+      bsColor,
+      idx
+    );
+  }
+  function onBSpreadScrubberChange(value: number) {
+    setBsOffsetY(value);
+    setElementPropertyBoxShadow(
+      bsOffsetX,
+      bsOffsetY,
+      bsBlur,
+      bsSpread,
+      bsColor,
+      idx
+    );
+  }
+  function onBsColorScrubberChange(value: number) {
+    setBsOffsetY(value);
+    setElementPropertyBoxShadow(
+      bsOffsetX,
+      bsOffsetY,
+      bsBlur,
+      bsSpread,
+      bsColor,
+      idx
+    );
+  }
   const rgbToHex = (rgb) =>
     "#" +
     rgb
