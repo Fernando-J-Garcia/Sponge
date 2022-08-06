@@ -26,8 +26,9 @@ export default function Toolbar() {
     currentColor,
     setCurrentColor,
     elementPropertiesList,
-    setElementPropertyColor,
-    setElementPropertyRotation,
+    // setElementPropertyColor,
+    // setElementPropertyRotation,
+    // setElementPropertyBoxShadow,
   } = useContext(CanvasContext);
 
   function handleClickRect(e: React.MouseEvent<HTMLButtonElement>) {
@@ -105,6 +106,7 @@ export default function Toolbar() {
               idx={idx}
               setElementPropertyRotation={setElementPropertyRotation}
               setElementPropertyColor={setElementPropertyColor}
+              setElementPropertyBoxShadow={setElementPropertyBoxShadow}
             />
           </ListItem>
         ))}
