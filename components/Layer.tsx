@@ -37,7 +37,7 @@ export default function Layer({ elemProperty, idx }: any) {
     setRotation(value % 360);
     setElementPropertyRotation((value % 360) + "deg", idx);
   }
-  function onBsOffsetYScrubberChange(value: number) {
+  function onBsOffsetYChange(value: number) {
     setBsOffsetY(value);
     setElementPropertyBoxShadow(
       bsOffsetX,
@@ -48,7 +48,7 @@ export default function Layer({ elemProperty, idx }: any) {
       idx
     );
   }
-  function onBsOffsetXScrubberChange(value: number) {
+  function onBsOffsetXChange(value: number) {
     setBsOffsetY(value);
     setElementPropertyBoxShadow(
       bsOffsetX,
@@ -59,7 +59,7 @@ export default function Layer({ elemProperty, idx }: any) {
       idx
     );
   }
-  function onBsBlurScrubberChange(value: number) {
+  function onBsBlurChange(value: number) {
     setBsOffsetY(value);
     setElementPropertyBoxShadow(
       bsOffsetX,
@@ -70,7 +70,7 @@ export default function Layer({ elemProperty, idx }: any) {
       idx
     );
   }
-  function onBSpreadScrubberChange(value: number) {
+  function onBsSpreadChange(value: number) {
     setBsOffsetY(value);
     setElementPropertyBoxShadow(
       bsOffsetX,
@@ -81,7 +81,7 @@ export default function Layer({ elemProperty, idx }: any) {
       idx
     );
   }
-  function onBsColorScrubberChange(value: number) {
+  function onBsColorChange(value: string) {
     setBsOffsetY(value);
     setElementPropertyBoxShadow(
       bsOffsetX,
@@ -127,15 +127,31 @@ export default function Layer({ elemProperty, idx }: any) {
             <PopoverBody>
               <Stack>
                 <FormLabel>OffsetY</FormLabel>
-                <Input defaultValue={bsOffsetY} />
+                <Input
+                  defaultValue={bsOffsetY}
+                  onChange={(e) => onBsOffsetYChange(parseInt(e.target.value))}
+                />
                 <FormLabel>OffsetX</FormLabel>
-                <Input defaultValue={bsOffsetX} />
+                <Input
+                  defaultValue={bsOffsetX}
+                  onChange={(e) => onBsOffsetXChange(parseInt(e.target.value))}
+                />
                 <FormLabel>Blur</FormLabel>
-                <Input defaultValue={bsBlur} />
+                <Input
+                  defaultValue={bsBlur}
+                  onChange={(e) => onBsBlurChange(parseInt(e.target.value))}
+                />
                 <FormLabel>Spread</FormLabel>
-                <Input defaultValue={bsSpread} />
+                <Input
+                  defaultValue={bsSpread}
+                  onChange={(e) => onBsSpreadChange(parseInt(e.target.value))}
+                />
                 <FormLabel>Color</FormLabel>
-                <input defaultValue={bsColor} type="color" />
+                <input
+                  defaultValue={bsColor}
+                  type="color"
+                  onChange={(e) => onBsColorChange(e.target.value)}
+                />
               </Stack>
             </PopoverBody>
           </PopoverContent>
