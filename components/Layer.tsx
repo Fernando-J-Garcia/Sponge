@@ -13,22 +13,38 @@ import {
   Portal,
   Stack,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { CanvasContext } from "./CanvasProvider";
 import NumberScrubber from "./NumberScrubber";
 import RotateIcon from "./svgs/RotateIcon";
 import ShadowIcon from "./svgs/ShadowIcon";
 
-export default function Layer({
-  elemProperty,
-  idx,
-  setElementPropertyRotation,
-  setElementPropertyColor,
-}: any) {
+export default function Layer({ elemProperty, idx }: any) {
+  const {
+    setElementPropertyColor,
+    setElementPropertyRotation,
+    setElementPropertyBoxShadow,
+  } = useContext(CanvasContext);
   const [rotation, setRotation] = useState(0);
-  function onNumberScubberChange(value: number) {
+
+  const [bsOffsetX, setBsOffsetX] = useState(0);
+  const [bsOffsetY, setBsOffsetY] = useState(0);
+  const [bsBlur, setBsBlur] = useState(0);
+  const [bsSpread, setBsSpread] = useState(0);
+  const [bsColor, setBsColor] = useState(0);
+
+  function onRotationScubberChange(value: number) {
     setRotation(value % 360);
     setElementPropertyRotation((value % 360) + "deg", idx);
   }
+  function onBsOffsetYScrubberChange() {
+    setBsOffsetY(value);
+    setElementPropertyBoxShadow();
+  }
+  function onBsOffsetXScrubberChange() {}
+  function onBsBlurScrubberChange() {}
+  function onBSpreadScrubberChange() {}
+  function onBsColorScrubberChange() {}
   const rgbToHex = (rgb) =>
     "#" +
     rgb
@@ -78,7 +94,7 @@ export default function Layer({
           </PopoverContent>
         </Portal>
       </Popover>
-      <NumberScrubber callback={onNumberScubberChange}>
+      <NumberScrubber callback={onRotationScubberChange}>
         <Box
           display={"flex"}
           gap={"1"}
