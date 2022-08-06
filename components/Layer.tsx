@@ -31,7 +31,7 @@ export default function Layer({ elemProperty, idx }: any) {
   const [bsOffsetY, setBsOffsetY] = useState(0);
   const [bsBlur, setBsBlur] = useState(0);
   const [bsSpread, setBsSpread] = useState(0);
-  const [bsColor, setBsColor] = useState("");
+  const [bsColor, setBsColor] = useState("#000000");
 
   function onRotationScubberChange(value: number) {
     setRotation(value % 360);
@@ -127,15 +127,15 @@ export default function Layer({ elemProperty, idx }: any) {
             <PopoverBody>
               <Stack>
                 <FormLabel>OffsetY</FormLabel>
-                <Input />
+                <Input defaultValue={bsOffsetY} />
                 <FormLabel>OffsetX</FormLabel>
-                <Input />
+                <Input defaultValue={bsOffsetX} />
                 <FormLabel>Blur</FormLabel>
-                <Input />
+                <Input defaultValue={bsBlur} />
                 <FormLabel>Spread</FormLabel>
-                <Input />
+                <Input defaultValue={bsSpread} />
                 <FormLabel>Color</FormLabel>
-                <Input />
+                <input defaultValue={bsColor} type="color" />
               </Stack>
             </PopoverBody>
           </PopoverContent>
