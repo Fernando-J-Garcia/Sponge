@@ -18,7 +18,7 @@ import {
   Portal,
   Stack,
 } from "@chakra-ui/react";
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { CanvasContext } from "./CanvasProvider";
 import NumberScrubber from "./NumberScrubber";
 import RotateIcon from "./svgs/RotateIcon";
@@ -36,7 +36,7 @@ export default function Layer({ elemProperty, idx }: any) {
   const [bsOffsetY, setBsOffsetY] = useState(0);
   const [bsBlur, setBsBlur] = useState(0);
   const [bsSpread, setBsSpread] = useState(0);
-  const [bsColor, setBsColor] = useState("#000000");
+  const bsColor = useRef("#000000");
 
   function onRotationScubberChange(value: number) {
     setRotation(value % 360);
@@ -49,7 +49,7 @@ export default function Layer({ elemProperty, idx }: any) {
       bsOffsetY,
       bsBlur,
       bsSpread,
-      bsColor,
+      bsColor.current,
       idx
     );
   }
@@ -60,7 +60,7 @@ export default function Layer({ elemProperty, idx }: any) {
       bsOffsetY,
       bsBlur,
       bsSpread,
-      bsColor,
+      bsColor.current,
       idx
     );
   }
@@ -71,7 +71,7 @@ export default function Layer({ elemProperty, idx }: any) {
       bsOffsetY,
       bsBlur,
       bsSpread,
-      bsColor,
+      bsColor.current,
       idx
     );
   }
@@ -82,18 +82,19 @@ export default function Layer({ elemProperty, idx }: any) {
       bsOffsetY,
       bsBlur,
       bsSpread,
-      bsColor,
+      bsColor.current,
       idx
     );
   }
   function onBsColorChange(value: string) {
-    setBsColor(value);
+    bsColor.current = value;
+    console.log(bsColor.current);
     setElementPropertyBoxShadow(
       bsOffsetX,
       bsOffsetY,
       bsBlur,
       bsSpread,
-      bsColor,
+      bsColor.current,
       idx
     );
   }
@@ -178,7 +179,7 @@ export default function Layer({ elemProperty, idx }: any) {
                 </NumberInput>
                 <FormLabel>Color</FormLabel>
                 <input
-                  defaultValue={bsColor}
+                  defaultValue={bsColor.current}
                   type="color"
                   onChange={(e) => onBsColorChange(e.target.value)}
                 />
