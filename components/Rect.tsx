@@ -30,8 +30,6 @@ export default function Rect() {
       ref={ref}
       data-element="rect"
       style={{ backgroundColor: backgroundColor.current }}
-    >
-      Rect
-    </div>
+    ></div>
   );
 }
