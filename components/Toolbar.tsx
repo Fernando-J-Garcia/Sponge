@@ -63,16 +63,6 @@ export default function Toolbar() {
             ></Button>
           </AspectRatio>
         </GridItem>
-        {/* <GridItem>
-          <Button colorScheme={"twitter"} color="white" w={"100%"}>
-            Square
-          </Button>
-        </GridItem>
-        <GridItem>
-          <Button colorScheme={"twitter"} color="white" w={"100%"}>
-            Square
-          </Button>
-        </GridItem> */}
       </Grid>
       {/*Layers*/}
       <List overflow={"auto"}>
