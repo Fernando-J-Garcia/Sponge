@@ -2,24 +2,17 @@ import {
   AspectRatio,
   Box,
   Button,
-  Container,
   Grid,
   GridItem,
   List,
   ListItem,
 } from "@chakra-ui/react";
-import { jsx } from "@emotion/react";
 import React, { useContext, useEffect, useState } from "react";
-import { createRoot } from "react-dom/client";
 import { CanvasContext } from "./CanvasProvider";
 import Layer from "./Layer";
-import NumberScrubber from "./NumberScrubber";
 import Rect from "./Rect";
-import RotateIcon from "./svgs/RotateIcon";
-import ShadowIcon from "./svgs/ShadowIcon";
 
 export default function Toolbar() {
-  const [rectList, setRectList] = useState<JSX.Element[]>([]);
   const {
     addElement,
     elements,
