@@ -7,7 +7,7 @@ import {
   List,
   ListItem,
 } from "@chakra-ui/react";
-import React, { useContext, useEffect, useState } from "react";
+import React, { memo, useContext, useEffect, useState } from "react";
 import { CanvasContext } from "./CanvasProvider";
 import Layer from "./Layer";
 import Rect from "./Rect";
@@ -70,19 +70,7 @@ export default function Toolbar() {
           Layers
         </ListItem>
         {elementPropertiesList.map((elemProperty, idx) => (
-          <ListItem
-            key={`layer-${idx}`}
-            w={"100%"}
-            borderBottom="1px"
-            p={"2"}
-            display="flex"
-            alignItems={"center"}
-            gap="2"
-            cursor={"pointer"}
-            _hover={{ backgroundColor: "var(--chakra-colors-blackAlpha-50)" }}
-          >
-            <Layer elemProperty={elemProperty} idx={idx} />
-          </ListItem>
+          <Layer elemProperty={elemProperty} idx={idx} key={`layer-${idx}`} />
         ))}
       </List>
       {/*Color Picker*/}

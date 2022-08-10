@@ -3,6 +3,7 @@ import {
   Button,
   FormLabel,
   Input,
+  ListItem,
   NumberDecrementStepper,
   NumberIncrementStepper,
   NumberInput,
@@ -108,7 +109,16 @@ export default function Layer({ elemProperty, idx }: any) {
       })
       .join("");
   return (
-    <>
+    <ListItem
+      w={"100%"}
+      borderBottom="1px"
+      p={"2"}
+      display="flex"
+      alignItems={"center"}
+      gap="2"
+      cursor={"pointer"}
+      _hover={{ backgroundColor: "var(--chakra-colors-blackAlpha-50)" }}
+    >
       {elemProperty.getAttribute("data-element")}
       <input
         type={"color"}
@@ -206,6 +216,6 @@ export default function Layer({ elemProperty, idx }: any) {
           </span>
         </Box>
       </NumberScrubber>
-    </>
+    </ListItem>
   );
 }
