@@ -23,13 +23,25 @@ export default function Toolbar() {
   } = useContext(CanvasContext);
 
   function handleClickRect(e: React.MouseEvent<HTMLButtonElement>) {
-    addElement(<Rect key={elements?.length} />);
+    addElement(
+      <Rect
+        key={elements?.length}
+        startingPosX={e.pageX}
+        startingPosY={e.pageY}
+      />
+    );
   }
   function handleClickEclipse(e: React.MouseEvent<HTMLButtonElement>) {
-    addElement(<Eclipse key={elements?.length} />);
+    addElement(
+      <Eclipse
+        key={elements?.length}
+        startingPosX={e.pageX}
+        startingPosY={e.pageY}
+      />
+    );
   }
 
-  function arePropsEqual(prevProps, nextProps) {
+  function arePropsEqual(prevProps: Readonly<any>, nextProps: Readonly<any>) {
     return prevProps.elemProperty === nextProps.elemProperty;
   }
   const MemoizedLayer = memo(Layer, arePropsEqual);
