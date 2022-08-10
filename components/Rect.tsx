@@ -1,7 +1,12 @@
 import React, { useRef, useEffect, useContext } from "react";
 import { CanvasContext } from "./CanvasProvider";
 
-export default function Rect() {
+interface IRectProps {
+  startingPosX: number;
+  startingPosY: number;
+}
+
+export default function Rect({ startingPosX, startingPosY }: IRectProps) {
   const { setFocusedElement, currentColor, addElementProperty } =
     useContext(CanvasContext);
   const ref = useRef<HTMLDivElement>(null);
@@ -12,8 +17,12 @@ export default function Rect() {
       return;
     }
     onMount.current = false;
-
     if (ref.current === null) return;
+    const width = ref.current.clientWidth;
+    const height = ref.current.clientHeight;
+    ref.current.style.left = startingPosX - width / 2 + "px";
+    ref.current.style.top = startingPosY - height / 2 + "px";
+
     addElementProperty(ref.current);
     setFocusedElement(ref.current);
   }, []);
