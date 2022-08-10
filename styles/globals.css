@@ -11,3 +11,6 @@
 [data-element]:hover {
   outline: 1px solid black;
 }
+[data-element="eclipse"] {
+  border-radius: 50%;
+}
