@@ -1,7 +1,12 @@
 import React, { useRef, useEffect, useContext } from "react";
 import { CanvasContext } from "./CanvasProvider";
 
-export default function Eclipse() {
+interface IEclipseProps {
+  startingPosX: number;
+  startingPosY: number;
+}
+
+export default function Eclipse({ startingPosX, startingPosY }: IEclipseProps) {
   const { setFocusedElement, currentColor, addElementProperty } =
     useContext(CanvasContext);
   const ref = useRef<HTMLDivElement>(null);
@@ -14,6 +19,11 @@ export default function Eclipse() {
     onMount.current = false;
 
     if (ref.current === null) return;
+    const width = ref.current.clientWidth;
+    const height = ref.current.clientHeight;
+    ref.current.style.left = startingPosX - width / 2 + "px";
+    ref.current.style.top = startingPosY - height / 2 + "px";
+
     addElementProperty(ref.current);
     setFocusedElement(ref.current);
   }, []);
@@ -28,7 +38,7 @@ export default function Eclipse() {
     <div
       onMouseDown={handleMouseDown}
       ref={ref}
-      data-element="rect"
+      data-element="eclipse"
       style={{ backgroundColor: backgroundColor.current }}
     ></div>
   );
