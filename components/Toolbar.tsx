@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import React, { memo, useContext, useEffect, useState } from "react";
 import { CanvasContext } from "./CanvasProvider";
+import Eclipse from "./Eclipse";
 import Layer from "./Layer";
 import Rect from "./Rect";
 
@@ -24,6 +25,14 @@ export default function Toolbar() {
   function handleClickRect(e: React.MouseEvent<HTMLButtonElement>) {
     addElement(<Rect key={elements?.length} />);
   }
+  function handleClickEclipse(e: React.MouseEvent<HTMLButtonElement>) {
+    addElement(<Eclipse key={elements?.length} />);
+  }
+
+  function arePropsEqual(prevProps, nextProps) {
+    return prevProps.elemProperty === nextProps.elemProperty;
+  }
+  const MemoizedLayer = memo(Layer, arePropsEqual);
   return (
     <Box
       bg="gray.100"
@@ -60,6 +69,7 @@ export default function Toolbar() {
               border={"2px"}
               borderRadius="50%"
               variant="outline"
+              onClick={handleClickEclipse}
             ></Button>
           </AspectRatio>
         </GridItem>
@@ -70,7 +80,12 @@ export default function Toolbar() {
           Layers
         </ListItem>
         {elementPropertiesList.map((elemProperty, idx) => (
-          <Layer elemProperty={elemProperty} idx={idx} key={`layer-${idx}`} />
+          <MemoizedLayer
+            elemProperty={elemProperty}
+            idx={idx}
+            key={`layer-${idx}`}
+          />
+          // <Layer elemProperty={elemProperty} idx={idx} key={`layer-${idx}`} />
         ))}
       </List>
       {/*Color Picker*/}
