@@ -40,14 +40,6 @@ export default function Toolbar() {
       />
     );
   }
-
-  function arePropsEqual(prevProps: Readonly<any>, nextProps: Readonly<any>) {
-    return (
-      prevProps.elemProperty.getAttribute("data-element") ===
-      nextProps.elemProperty.getAttribute("data-element")
-    );
-  }
-  const MemoizedLayer = memo(Layer, arePropsEqual);
   return (
     <Box
       bg="gray.100"
@@ -95,12 +87,7 @@ export default function Toolbar() {
           Layers
         </ListItem>
         {elementPropertiesList.map((elemProperty, idx) => (
-          <MemoizedLayer
-            elemProperty={elemProperty}
-            idx={idx}
-            key={`layer-${idx}`}
-          />
-          // <Layer elemProperty={elemProperty} idx={idx} key={`layer-${idx}`} />
+          <Layer elemProperty={elemProperty} idx={idx} key={`layer-${idx}`} />
         ))}
       </List>
       {/*Color Picker*/}
