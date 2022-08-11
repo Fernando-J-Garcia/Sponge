@@ -103,7 +103,7 @@ export default function Layer({ elemProperty, idx }: any) {
     "#" +
     rgb
       .match(/\d+/g)
-      .map(function (x) {
+      .map(function (x: string) {
         x = parseInt(x).toString(16);
         return x.length == 1 ? "0" + x : x;
       })
@@ -125,10 +125,11 @@ export default function Layer({ elemProperty, idx }: any) {
           type={"color"}
           defaultValue={rgbToHex(elemProperty.style.backgroundColor)}
           onChange={(e) => setElementPropertyColor(e.target.value, idx)}
+          style={{ width: "25px" }}
         />
         <Popover>
           <PopoverTrigger>
-            <Button>
+            <Button h={5} minW={1} p={1}>
               <ShadowIcon
                 width={"2ch"}
                 height={"2ch"}
@@ -199,6 +200,7 @@ export default function Layer({ elemProperty, idx }: any) {
             </PopoverContent>
           </Portal>
         </Popover>
+        {/*Number Scrubber */}
         <NumberScrubber callback={onRotationScubberChange}>
           <Box
             display={"flex"}
