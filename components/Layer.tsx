@@ -120,6 +120,7 @@ export default function Layer({ elemProperty, idx }: any) {
         cursor={"pointer"}
         _hover={{ backgroundColor: "var(--chakra-colors-blackAlpha-50)" }}
       >
+        {/*Color Picker */}
         {elemProperty.getAttribute("data-element")}
         <input
           type={"color"}
@@ -127,6 +128,7 @@ export default function Layer({ elemProperty, idx }: any) {
           onChange={(e) => setElementPropertyColor(e.target.value, idx)}
           style={{ width: "25px" }}
         />
+        {/*Shadow Button */}
         <Popover>
           <PopoverTrigger>
             <Button h={5} minW={1} p={1}>
