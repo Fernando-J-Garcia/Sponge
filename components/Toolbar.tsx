@@ -42,7 +42,10 @@ export default function Toolbar() {
   }
 
   function arePropsEqual(prevProps: Readonly<any>, nextProps: Readonly<any>) {
-    return prevProps.elemProperty === nextProps.elemProperty;
+    return (
+      prevProps.elemProperty.getAttribute("data-element") ===
+      nextProps.elemProperty.getAttribute("data-element")
+    );
   }
   const MemoizedLayer = memo(Layer, arePropsEqual);
   return (
