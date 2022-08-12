@@ -38,6 +38,8 @@ export default function Layer({ elemProperty, idx }: any) {
   const [bsBlur, setBsBlur] = useState(0);
   const [bsSpread, setBsSpread] = useState(0);
   const bsColor = useRef("#000000");
+  const [borderSize, setBorderSize] = useState(0);
+  const borderColor = useRef("#000000");
 
   function onRotationScubberChange(value: number) {
     setRotation(value % 360);
@@ -89,7 +91,6 @@ export default function Layer({ elemProperty, idx }: any) {
   }
   function onBsColorChange(value: string) {
     bsColor.current = value;
-    console.log(bsColor.current);
     setElementPropertyBoxShadow(
       bsOffsetX,
       bsOffsetY,
@@ -98,6 +99,12 @@ export default function Layer({ elemProperty, idx }: any) {
       bsColor.current,
       idx
     );
+  }
+  function onBorderSizeChange(value: number) {
+    setBorderSize(value);
+  }
+  function onBorderColorChange(value: string) {
+    borderColor.current = value;
   }
   const rgbToHex = (rgb) =>
     "#" +
@@ -208,7 +215,7 @@ export default function Layer({ elemProperty, idx }: any) {
             display={"flex"}
             gap={"1"}
             alignItems={"center"}
-            px={"2"}
+            px={"1"}
             _hover={{ cursor: "e-resize", outline: "1px solid gray" }}
           >
             <RotateIcon
@@ -221,8 +228,50 @@ export default function Layer({ elemProperty, idx }: any) {
             </span>
           </Box>
         </NumberScrubber>
+        {/*Border Button */}
+        <Popover>
+          <PopoverTrigger>
+            <Button h={5} minW={1} p={1}>
+              <div
+                style={{
+                  width: "2ch",
+                  height: "2ch",
+                  border: "1px solid var(--chakra-colors-blackAlpha-600)",
+                }}
+              />
+            </Button>
+          </PopoverTrigger>
+          <Portal>
+            <PopoverContent>
+              <PopoverArrow />
+              <PopoverHeader>Border Properties</PopoverHeader>
+              <PopoverCloseButton />
+              <PopoverBody>
+                <Stack>
+                  <FormLabel>Size</FormLabel>
+                  <NumberInput
+                    value={borderSize}
+                    onChange={(value) => onBorderSizeChange(parseInt(value))}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                  <FormLabel>Color</FormLabel>
+                  <input
+                    defaultValue={borderColor.current}
+                    type="color"
+                    onChange={(e) => onBorderColorChange(e.target.value)}
+                  />
+                </Stack>
+              </PopoverBody>
+            </PopoverContent>
+          </Portal>
+        </Popover>
       </ListItem>
     ),
-    [idx, rotation, bsOffsetX, bsOffsetY, bsBlur, bsSpread]
+    [idx, rotation, bsOffsetX, bsOffsetY, bsBlur, bsSpread, borderSize]
   );
 }
