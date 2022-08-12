@@ -17,6 +17,7 @@ import {
   PopoverHeader,
   PopoverTrigger,
   Portal,
+  Select,
   Stack,
 } from "@chakra-ui/react";
 import React, { useContext, useMemo, useRef, useState } from "react";
@@ -30,6 +31,7 @@ export default function Layer({ elemProperty, idx }: any) {
     setElementPropertyColor,
     setElementPropertyRotation,
     setElementPropertyBoxShadow,
+    setElementPropertyBorder,
   } = useContext(CanvasContext);
   const [rotation, setRotation] = useState(0);
 
@@ -39,6 +41,7 @@ export default function Layer({ elemProperty, idx }: any) {
   const [bsSpread, setBsSpread] = useState(0);
   const bsColor = useRef("#000000");
   const [borderSize, setBorderSize] = useState(0);
+  const borderStyle = useRef("none");
   const borderColor = useRef("#000000");
 
   function onRotationScubberChange(value: number) {
@@ -102,9 +105,30 @@ export default function Layer({ elemProperty, idx }: any) {
   }
   function onBorderSizeChange(value: number) {
     setBorderSize(value);
+    setElementPropertyBorder(
+      borderSize,
+      borderColor.current,
+      borderStyle.current,
+      idx
+    );
+  }
+  function onBorderStyleChange(value: string) {
+    borderStyle.current = value;
+    setElementPropertyBorder(
+      borderSize,
+      borderColor.current,
+      borderStyle.current,
+      idx
+    );
   }
   function onBorderColorChange(value: string) {
     borderColor.current = value;
+    setElementPropertyBorder(
+      borderSize,
+      borderColor.current,
+      borderStyle.current,
+      idx
+    );
   }
   const rgbToHex = (rgb) =>
     "#" +
@@ -259,6 +283,22 @@ export default function Layer({ elemProperty, idx }: any) {
                       <NumberDecrementStepper />
                     </NumberInputStepper>
                   </NumberInput>
+                  <FormLabel>Style</FormLabel>
+                  <Select
+                    defaultValue={borderStyle.current}
+                    onChange={(e) => onBorderStyleChange(e.target.value)}
+                  >
+                    <option value="dotted">dotted</option>
+                    <option value="dashed ">dashed</option>
+                    <option value="solid">solid</option>
+                    <option value="double">double</option>
+                    <option value="groove">groove</option>
+                    <option value="ridge">ridge</option>
+                    <option value="inset">inset</option>
+                    <option value="outset">outset</option>
+                    <option value="none">none</option>
+                    <option value="hidden">hidden</option>
+                  </Select>
                   <FormLabel>Color</FormLabel>
                   <input
                     defaultValue={borderColor.current}
