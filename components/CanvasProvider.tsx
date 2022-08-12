@@ -24,6 +24,12 @@ interface CanvasContextInterface {
     color: string,
     index: number
   ) => void;
+  setElementPropertyBorder: (
+    size: number,
+    color: string,
+    style: string,
+    index: number
+  ) => void;
   focusedElement: HTMLDivElement | null;
   setFocusedElement: (element: HTMLDivElement | null) => void;
   currentColor: string;
@@ -40,6 +46,7 @@ const defaultValue = {
   setElementPropertyColor: () => {},
   setElementPropertyRotation: () => {},
   setElementPropertyBoxShadow: () => {},
+  setElementPropertyBorder: () => {},
   focusedElement: null,
   setFocusedElement: () => {},
   currentColor: "#000000",
@@ -122,6 +129,15 @@ export function CanvasProvider({ children }: any) {
 
     setElementPropertiesList(result);
   }
+  function setElementPropertyBorder(
+    size: number,
+    color: string,
+    style: string,
+    index: number
+  ) {
+    const result = elementPropertiesList;
+    result[index].style.border = `${size}px ${style} ${color}`;
+  }
 
   const value: CanvasContextInterface = {
     elements: elements,
@@ -132,6 +148,7 @@ export function CanvasProvider({ children }: any) {
     setElementPropertyColor: setElementPropertyColor,
     setElementPropertyRotation: setElementPropertyRotation,
     setElementPropertyBoxShadow: setElementPropertyBoxShadow,
+    setElementPropertyBorder: setElementPropertyBorder,
     focusedElement: focusedElement.current,
     setFocusedElement: setFocusedElement,
     currentColor: currentColor.current,
