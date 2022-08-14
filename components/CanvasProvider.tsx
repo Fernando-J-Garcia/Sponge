@@ -72,7 +72,7 @@ export function CanvasProvider({ children }: any) {
   let offsetLeft = 0;
   let offsetTop = 0;
 
-  function handleMouseMove(e) {
+  function handleMouseMove(e: MouseEvent) {
     if (focusedElement.current === null) return;
     const rectStyle = getComputedStyle(focusedElement.current);
 
@@ -96,7 +96,6 @@ export function CanvasProvider({ children }: any) {
   function setFocusedElement(element: HTMLDivElement | null) {
     focusedElement.current = element;
     if (focusedElement.current === null) return;
-    focusedElement.current.addEventListener("mouesmove", handleMouseMove);
   }
   function addElementProperty(value: HTMLDivElement) {
     console.log(value);

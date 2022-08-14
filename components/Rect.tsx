@@ -26,7 +26,7 @@ export default function Rect({ startingPosX, startingPosY }: IRectProps) {
     addElementProperty(ref.current);
     setFocusedElement(ref.current);
   }, []);
-  function handleMouseDown(e) {
+  function handleMouseDown(e: React.MouseEvent<HTMLDivElement>) {
     if (ref.current === null) return;
     const position = ref.current.getBoundingClientRect();
     if (position.right < e.clientX + 20 && position.top < e.clientY + 20)

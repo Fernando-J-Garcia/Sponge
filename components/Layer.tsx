@@ -130,15 +130,20 @@ export default function Layer({ elemProperty, idx }: any) {
       idx
     );
   }
-  const rgbToHex = (rgb) =>
-    "#" +
-    rgb
-      .match(/\d+/g)
-      .map(function (x: string) {
-        x = parseInt(x).toString(16);
-        return x.length == 1 ? "0" + x : x;
-      })
-      .join("");
+  const rgbToHex = (rgb: string) => {
+    const numbers = rgb.match(/\d+/g);
+    if (numbers === null) return null;
+
+    return (
+      "#" +
+      numbers
+        .map(function (x: string) {
+          x = parseInt(x).toString(16);
+          return x.length == 1 ? "0" + x : x;
+        })
+        .join("")
+    );
+  };
   return useMemo(
     () => (
       <ListItem
@@ -155,7 +160,9 @@ export default function Layer({ elemProperty, idx }: any) {
         {elemProperty.getAttribute("data-element")}
         <input
           type={"color"}
-          defaultValue={rgbToHex(elemProperty.style.backgroundColor)}
+          defaultValue={
+            rgbToHex(elemProperty.style.backgroundColor) || "#000000"
+          }
           onChange={(e) => setElementPropertyColor(e.target.value, idx)}
           style={{ width: "25px" }}
         />
