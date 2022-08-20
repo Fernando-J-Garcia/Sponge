@@ -19,6 +19,7 @@ import {
   Portal,
   Select,
   Stack,
+  useColorMode,
 } from "@chakra-ui/react";
 import React, { useContext, useMemo, useRef, useState } from "react";
 import { CanvasContext } from "./CanvasProvider";
@@ -43,6 +44,7 @@ export default function Layer({ elemProperty, idx }: any) {
   const [borderSize, setBorderSize] = useState(0);
   const borderStyle = useRef("none");
   const borderColor = useRef("#000000");
+  const { colorMode, toggleColorMode } = useColorMode();
 
   function onRotationScubberChange(value: number) {
     setRotation(value % 360);
@@ -173,7 +175,11 @@ export default function Layer({ elemProperty, idx }: any) {
               <ShadowIcon
                 width={"2ch"}
                 height={"2ch"}
-                color={"var(--chakra-colors-blackAlpha-600)"}
+                color={
+                  colorMode === "light"
+                    ? "var(--chakra-colors-blackAlpha-600)"
+                    : "var(--chakra-colors-blackAlpha-800)"
+                }
               />
             </Button>
           </PopoverTrigger>
@@ -252,9 +258,21 @@ export default function Layer({ elemProperty, idx }: any) {
             <RotateIcon
               width={"1.5ch"}
               height={"2ch"}
-              color={"var(--chakra-colors-blackAlpha-600)"}
+              color={
+                colorMode === "light"
+                  ? "var(--chakra-colors-blackAlpha-600)"
+                  : "var(--chakra-colors-blackAlpha-800)"
+              }
             />
-            <span style={{ color: "var(--chakra-colors-blackAlpha-600)" }}>
+            <span
+              style={{
+                color: `${
+                  colorMode === "light"
+                    ? "var(--chakra-colors-blackAlpha-600)"
+                    : "var(--chakra-colors-whiteAlpha-600)"
+                }`,
+              }}
+            >
               {rotation || 0}&#176;
             </span>
           </Box>
@@ -267,7 +285,11 @@ export default function Layer({ elemProperty, idx }: any) {
                 style={{
                   width: "2ch",
                   height: "2ch",
-                  border: "1px solid var(--chakra-colors-blackAlpha-600)",
+                  border: `1px solid ${
+                    colorMode === "light"
+                      ? "var(--chakra-colors-blackAlpha-600)"
+                      : "var(--chakra-colors-blackAlpha-800)"
+                  }`,
                 }}
               />
             </Button>

@@ -6,6 +6,7 @@ import {
   GridItem,
   List,
   ListItem,
+  useColorMode,
 } from "@chakra-ui/react";
 import React, { memo, useContext, useEffect, useState } from "react";
 import { CanvasContext } from "./CanvasProvider";
@@ -21,6 +22,8 @@ export default function Toolbar() {
     setCurrentColor,
     elementPropertiesList,
   } = useContext(CanvasContext);
+
+  const { colorMode, toggleColorMode } = useColorMode();
 
   function handleClickRect(e: React.MouseEvent<HTMLButtonElement>) {
     addElement(
@@ -42,7 +45,7 @@ export default function Toolbar() {
   }
   return (
     <Box
-      bg="gray.100"
+      bg={colorMode === "light" ? "gray.100" : "gray.600"}
       w={"200px"}
       h="100vh"
       display={"flex"}

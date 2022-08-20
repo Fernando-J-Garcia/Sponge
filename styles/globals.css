@@ -14,3 +14,6 @@
 [data-element="eclipse"] {
   border-radius: 50%;
 }
+input[type="color"] {
+  background-color: transparent;
+}
