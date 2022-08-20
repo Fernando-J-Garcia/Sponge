@@ -24,6 +24,7 @@ yarn dev
 ```
 
 ##Todo
+
 - [ ] dragging and dropping layers
 - [ ] Ability to edit the background color
 - [ ] Improve UI design
