@@ -31,7 +31,7 @@ import ShadowIcon from "./svgs/ShadowIcon";
 export default function Layer({ elemProperty, idx }: any) {
   const { setElementPropertyColor } = useContext(CanvasContext);
 
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode } = useColorMode();
 
   const rgbToHex = (rgb: string) => {
     const numbers = rgb.match(/\d+/g);

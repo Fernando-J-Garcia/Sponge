@@ -1,5 +1,3 @@
-import { jsx } from "@emotion/react";
-import { prepareServerlessUrl } from "next/dist/server/base-server";
 import React, {
   createContext,
   FC,
@@ -104,14 +102,10 @@ export function CanvasProvider({ children }: any) {
   function setElementPropertyColor(value: string, index: number) {
     const result = elementPropertiesList;
     result[index].style.backgroundColor = value;
-
-    setElementPropertiesList(result);
   }
   function setElementPropertyRotation(value: string, index: number) {
     const result = elementPropertiesList;
     result[index].style.transform = `rotate(${value})`;
-
-    setElementPropertiesList(result);
   }
   function setElementPropertyBoxShadow(
     offsetX: number,
@@ -125,8 +119,6 @@ export function CanvasProvider({ children }: any) {
     result[
       index
     ].style.boxShadow = `${offsetX}px ${offsetY}px ${blur}px ${spread}px ${color}`;
-
-    setElementPropertiesList(result);
   }
   function setElementPropertyBorder(
     size: number,
