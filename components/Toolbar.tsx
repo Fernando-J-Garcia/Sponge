@@ -94,7 +94,7 @@ export default function Toolbar() {
         ))}
       </List>
       {/*Color Picker*/}
-      <Box display={"flex"} flexDir="row" gap={"2"}>
+      <Box display={"flex"} flexDir="row" gap={"2"} px={2}>
         <label>Color</label>
         <input
           type={"color"}
