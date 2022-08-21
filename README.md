@@ -23,7 +23,7 @@ npm run dev
 yarn dev
 ```
 
-##Todo
+## Todo
 - [ ] dragging and dropping layers
 - [ ] Ability to edit the background color
 - [ ] Improve UI design
