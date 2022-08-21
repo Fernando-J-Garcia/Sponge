@@ -46,7 +46,7 @@ export default function Toolbar() {
   return (
     <Box
       bg={colorMode === "light" ? "gray.100" : "gray.600"}
-      w={"200px"}
+      w={"300px"}
       h="100vh"
       display={"flex"}
       flexDir="column"
@@ -69,7 +69,7 @@ export default function Toolbar() {
           </AspectRatio>
         </GridItem>
         <GridItem>
-          <AspectRatio ratio={1} maxW="100px">
+          <AspectRatio ratio={1} maxW="200px">
             <Button
               colorScheme={"twitter"}
               color="white"

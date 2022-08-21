@@ -58,13 +58,13 @@ export default function Layer({ elemProperty, idx }: any) {
       cursor={"pointer"}
       _hover={{ backgroundColor: "var(--chakra-colors-blackAlpha-50)" }}
     >
+      <Box w={"100%"}>{elemProperty.getAttribute("data-element")}</Box>
       {/*Color Picker */}
-      {elemProperty.getAttribute("data-element")}
       <input
         type={"color"}
         defaultValue={rgbToHex(elemProperty.style.backgroundColor) || "#000000"}
         onChange={(e) => setElementPropertyColor(e.target.value, idx)}
-        style={{ width: "25px" }}
+        style={{ width: "50px" }}
       />
       {/*Shadow Button */}
       <BoxShadow idx={idx} colorMode={colorMode} />
@@ -300,12 +300,12 @@ function Border({ idx, colorMode }: { idx: number; colorMode: ColorMode }) {
     () => (
       <Popover>
         <PopoverTrigger>
-          <Button h={5} minW={1} p={1}>
+          <Button p={0} w={"50px"} h={"25px"} minW={0}>
             <div
               style={{
-                width: "2ch",
-                height: "2ch",
-                border: `1px solid ${
+                width: "100%",
+                height: "100%",
+                border: `1px dashed ${
                   colorMode === "light"
                     ? "var(--chakra-colors-blackAlpha-600)"
                     : "var(--chakra-colors-blackAlpha-800)"
