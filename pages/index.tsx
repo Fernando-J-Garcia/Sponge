@@ -1,15 +1,11 @@
-import {
-  Box,
-  Button,
-  IconButton,
-  LightMode,
-  useColorMode,
-} from "@chakra-ui/react";
+import { Box, Button, IconButton, useColorMode } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Canvas from "../components/Canvas";
 import { CanvasProvider } from "../components/CanvasProvider";
 import Toolbar from "../components/Toolbar";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { useState } from "react";
+import TutorialModal from "../components/TutorialModal";
 
 function downloadInnerHtml(filename: string, elId: string, mimeType: string) {
   var el = document.getElementById(elId);
@@ -32,6 +28,8 @@ const filename = "canvas.html";
 
 const Home: NextPage = () => {
   const { colorMode, toggleColorMode } = useColorMode();
+  //Tood change to useLocalStorage
+  const [isFirstVisit, setIsFirstVisit] = useState(true);
   return (
     <div className="home">
       <Box top={1} right={1} pos="absolute">
@@ -56,6 +54,7 @@ const Home: NextPage = () => {
         <Toolbar />
         <Canvas />
       </CanvasProvider>
+      <TutorialModal isFirstVisit={isFirstVisit} />
     </div>
   );
 };
