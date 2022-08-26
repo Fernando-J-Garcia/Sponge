@@ -35,7 +35,6 @@ export default function Toolbar() {
     const handleMouseMove = (e: MouseEvent) => {
       mouseCoords.x = e.pageX;
       mouseCoords.y = e.pageY;
-      console.log(mouseCoords);
     };
     document.addEventListener("keydown", handleKeyDown);
     document.addEventListener("mousemove", handleMouseMove);

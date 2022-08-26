@@ -96,7 +96,6 @@ export function CanvasProvider({ children }: any) {
     if (focusedElement.current === null) return;
   }
   function addElementProperty(value: HTMLDivElement) {
-    console.log(value);
     setElementPropertiesList((prev) => [...prev, value]);
   }
   function setElementPropertyColor(value: string, index: number) {
