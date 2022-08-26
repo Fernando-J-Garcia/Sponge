@@ -1,5 +1,6 @@
 <h1 align="center">
-  <img src="https://user-images.githubusercontent.com/105046544/185748430-c818f499-4559-4ff8-86c5-48ad38858d2e.svg" width="130" alt="Logo for T3" />
+
+  <img src="https://user-images.githubusercontent.com/105046544/186872485-2b069e53-5225-4518-a243-5d8679328d13.svg" width="130" alt="Logo for T3" />
 </h1>
 
 <p align="center">
@@ -25,6 +26,6 @@ yarn dev
 
 ## Todo
 - [ ] dragging and dropping layers
-- [ ] Ability to edit the background color
 - [ ] Improve UI design
 - [ ] Stop using CSS Resize tool and build a custom one
+- [ ] Add intro tutorial for first time users 
