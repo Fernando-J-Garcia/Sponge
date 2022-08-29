@@ -92,9 +92,11 @@ const TutorialModal = ({ isFirstVisit }: { isFirstVisit: boolean }) => {
         <ModalFooter justifyContent={"space-between"}>
           <Button onClick={onClose}>Skip</Button>
           <Box>
-            <Button mr={3} onClick={handleClickPrev}>
-              Prev
-            </Button>
+            {pageNumber !== 0 && (
+              <Button mr={3} onClick={handleClickPrev}>
+                Prev
+              </Button>
+            )}
             <Button
               colorScheme={"blue"}
               onClick={handleClickNext}
